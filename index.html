@@ -2,92 +2,34 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>rock-paper-scissors</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <script type="text/javascript">
-      function computerPlay () {
 
-        let computerSelection;
-        let t = Math.floor(Math.random() * Math.floor(3));
+    <div class="score">
+      <h1>Rezultat</h1>
+      <h3 class="player">Igrac: </h3>
+      <h3 class="cpu">Cpu: </h3>
+    </div>
 
-        switch (t) {
-          case 0:
-            computerSelection = "rock";
-            break;
-          case 1:
-            computerSelection = "scissors";
-            break;
-          case 2:
-            computerSelection = "paper";
-            break;
-        }
+    <div class="choice">
+      <div class="user-btns">
+        <h2>Igrac</h2>
+        <button class="user-btn">Rock</button>
+        <button class="user-btn">Paper</button>
+        <button class="user-btn">Scissors</button>
+      </div>
+      
+      <div class="cpu-btns">
+        <h2>Glupan</h2>
+        <button class="cpu-btn">Rock</button>
+        <button class="cpu-btn">Paper</button>
+        <button class="cpu-btn">Scissors</button>
+      </div>
+    </div>
 
-        return computerSelection;
-
-      }
-
-
-      function game (playerSelection) {
-
-        function playRound (computerSelection) {
-
-          let a = playerSelection.toLowerCase();
-
-          if (a === "rock" && computerSelection === "rock") {
-            return "It's a tie!";
-          } else if (a === "rock" && computerSelection === "scissors") {
-            return "You Win! Rock beats Scissors!";
-          } else if (a === "rock" && computerSelection === "paper") {
-            return "You Lose! Paper beats Rock!";
-          }
-
-          if (a === "paper" && computerSelection === "rock") {
-            return "You Win! Paper beats Rock!";
-          } else if (a === "paper" && computerSelection === "scissors") {
-            return "You Lose! Scissors beat Paper!";
-          } else if (a === "paper" && computerSelection === "paper") {
-            return "It's a Tie!";
-          }
-
-          if (a === "scissors" && computerSelection === "rock") {
-            return "You Lose! Rock beats Scissors!";
-          } else if (a === "scissors" && computerSelection === "scissors") {
-            return "It's a Tie!";
-          } else if (a === "scissors" && computerSelection === "paper") {
-            return "You Win! Scissors beat Paper!";
-          }
-
-        }
-
-        return playRound;
-
-      }
-
-      function gameCount () {
-        let t = 0;
-        let z = 0;
-        for (let i = 0; i < 5; i++) {
-          let result = game(prompt("Papir, kamen, skare"))(computerPlay());
-          console.log(result);
-          if (result.split("!")[0] === "You Win") {
-            t++;
-          } else if (result.split("!")[0] === "You Lose") {
-            z++;
-          }
-          console.log(`Ja ${t} : Glupan ${z}`);
-        }
-          if (t > z) {
-            alert("Pobjeda!");
-          } else if (t < z) {
-            alert("Izgubija!");
-          } else {
-            alert("Nerijesno!");
-          }
-      }
-
-      gameCount();
-
-    </script>
+   
+  <script src="script.js"></script>
   </body>
 </html>

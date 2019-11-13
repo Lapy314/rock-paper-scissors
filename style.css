@@ -1,0 +1,22 @@
+.choice {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;;
+}
+
+button {
+    border: none;
+    padding: 30px 50px;
+    margin: 20px;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.selected {
+    border: none;
+    padding: 30px 50px;
+    margin: 20px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    background-color: red;
+}
