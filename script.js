@@ -1,26 +1,57 @@
 function computerPlay () {
 
     const cpu = document.querySelectorAll('.cpu-btn');
+    let cpuSelected;
 
     let t = Math.floor(Math.random() * Math.floor(3));
 
             switch (t) {
                 case 0:
-                  cpu[0].classList.add('selected');
+                  cpu[0].classList.add('cpu-selected');
                   break;
                 case 1:
-                  cpu[1].classList.add('selected');
+                  cpu[1].classList.add('cpu-selected');
                   break;
                 case 2:
-                  cpu[2].classList.add('selected');
+                  cpu[2].classList.add('cpu-selected');
                   break;
               }
 
     // return computerSelection;
-    console.log(t);
+    cpuSelected = document.querySelector('.cpu-selected');
+
+    return cpuSelected;
   }
 
-computerPlay();
+// console.log(computerPlay());
+
+function userSelection () {
+
+  const user = document.querySelectorAll('.user-btn');
+  
+  // console.log(cpu.innerHTML)
+  // user.forEach( item => {
+  //   item.addEventListener('click', computerPlay);
+  // });
+
+  user.forEach(item => {
+    item.addEventListener('click', e => {
+      let cpu = computerPlay();
+      item.classList.add('user-selected');
+      console.log(item)
+      if(item.innerHTML === cpu.innerHTML) {
+        console.log('tie');
+      } else {
+        console.log('not tie')
+      }
+    })
+  })
+
+}
+
+userSelection();
+
+
 
 //   function game (playerSelection) {
 
