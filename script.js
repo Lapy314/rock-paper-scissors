@@ -19,18 +19,67 @@ function computerPlay () {
 
 }
 
-console.log(computerPlay());
+// console.log(computerPlay());
  
+let cpu = computerPlay();
 
-const userBtns = document.querySelectorAll('.user-btn');
-let userBtn = '';
+const rockBtn = document.querySelector('#rock-btn');
+const paperBtn = document.querySelector('#paper-btn');
+const scissorsBtn = document.querySelector('#scissors-btn');
+const igrac = document.querySelector('#player');
+const rock = rockBtn.innerHTML;
+const paper = paperBtn.innerHTML;
+const scissors = scissorsBtn.innerHTML;
+let t = 0;
+let z = 0;
+function rockGame (user, cpu) {
 
-userBtns.forEach(button => {
-  button.addEventListener('click', (e) => {
-    userBtn = e.target.innerHTML;
-    console.log(userBtn);
-  })
-})
+  return function () {
+    if (user === 'rock' && cpu === 'rock') {
+       console.log('tie');
+    } else if (user === 'rock' && cpu === 'paper') {
+      console.log('you lose, paper wins');
+    } else if (user === 'rock' && cpu === 'scissors') {
+      console.log('you win, scissors lose');
+      t++;
+      igrac.append(t);
+    }
+  }
+}
+
+function paperGame (user, cpu) {
+
+  return function () {
+    if (user === 'paper' && cpu === 'rock') {
+       console.log('you win, rock loses');
+    } else if (user === 'paper' && cpu === 'paper') {
+      console.log('tie');
+    } else if (user === 'paper' && cpu === 'scissors') {
+      console.log('you lose, scissors win');
+    }
+  }
+}
+
+function scissorsGame (user, cpu) {
+
+  return function () {
+    if (user === 'scissors' && cpu === 'rock') {
+       console.log('you lose, rock wins');
+    } else if (user === 'scissors' && cpu === 'paper') {
+      console.log('you win, paper loses');
+    } else if (user === 'scissors' && cpu === 'scissors') {
+      console.log('tie');
+    }
+  }
+}
+
+rockBtn.addEventListener('click', rockGame(rock, cpu));
+paperBtn.addEventListener('click', paperGame(paper, cpu));
+scissorsBtn.addEventListener('click', scissorsGame(scissors, cpu));
+
+// let cpu = computerPlay();
+
+// console.log(game(userBtn, cpu));
 
 
 // function game (playerSelection) {
