@@ -21,123 +21,127 @@ function computerPlay () {
 
 // console.log(computerPlay());
  
-let cpu = computerPlay();
 
 const rockBtn = document.querySelector('#rock-btn');
 const paperBtn = document.querySelector('#paper-btn');
 const scissorsBtn = document.querySelector('#scissors-btn');
 const igrac = document.querySelector('#player');
+const glupan = document.querySelector('#cpu');
 const rock = rockBtn.innerHTML;
 const paper = paperBtn.innerHTML;
 const scissors = scissorsBtn.innerHTML;
+const win = document.querySelector('.popup-win');
+const lose = document.querySelector('.popup-lose');
+const tie = document.querySelector('.popup-tie');
+
 let t = 0;
 let z = 0;
-function rockGame (user, cpu) {
 
+function rockGame (user, cpu) {
+  
   return function () {
+
+    cpu = computerPlay()
+
     if (user === 'rock' && cpu === 'rock') {
        console.log('tie');
+       t++;
+       z++;
+       igrac.textContent = `Igrac: ${t}`;
+       glupan.textContent = `Cpu: ${z}`;
     } else if (user === 'rock' && cpu === 'paper') {
       console.log('you lose, paper wins');
+       z++;
+       glupan.textContent = `Cpu: ${z}`;
     } else if (user === 'rock' && cpu === 'scissors') {
       console.log('you win, scissors lose');
-      t++;
-      igrac.append(t);
+       t++;
+       igrac.textContent = `Igrac: ${t}`;
     }
+
+    console.log(t, z)
+    
+    if (t === 3) {
+      win.style.display = 'block';
+    } else if (z === 3) {
+      lose.style.display = 'block';
+    } else if (t + z >= 5) {
+      tie.style.display = 'block';
+    }
+
   }
 }
 
 function paperGame (user, cpu) {
 
   return function () {
+
+    cpu = computerPlay()
+
     if (user === 'paper' && cpu === 'rock') {
        console.log('you win, rock loses');
+       t++;
+       igrac.textContent = `Igrac: ${t}`;
     } else if (user === 'paper' && cpu === 'paper') {
       console.log('tie');
+       t++;
+       z++;
+       igrac.textContent = `Igrac: ${t}`;
+       glupan.textContent = `Cpu: ${z}`;
     } else if (user === 'paper' && cpu === 'scissors') {
       console.log('you lose, scissors win');
+       z++;
+       glupan.textContent = `Cpu: ${z}`;
     }
+
+    console.log(t, z)
+
+    if (t === 3) {
+      win.style.display = 'block';
+    } else if (z === 3) {
+      lose.style.display = 'block';
+    } else if (t + z >= 5) {
+      tie.style.display = 'block';
+    }
+
   }
 }
 
 function scissorsGame (user, cpu) {
 
   return function () {
+
+    cpu = computerPlay()
+
     if (user === 'scissors' && cpu === 'rock') {
        console.log('you lose, rock wins');
+       z++;
+       glupan.textContent = `Cpu: ${z}`;
     } else if (user === 'scissors' && cpu === 'paper') {
       console.log('you win, paper loses');
+       t++;
+       igrac.textContent = `Igrac: ${t}`;
     } else if (user === 'scissors' && cpu === 'scissors') {
       console.log('tie');
+       t++;
+       z++;
+       igrac.textContent = `Igrac: ${t}`;
+       glupan.textContent = `Cpu: ${z}`;
     }
+
+    console.log(t, z)
+
+    if (t === 3) {
+      win.style.display = 'block';
+    } else if (z === 3) {
+      lose.style.display = 'block';
+    } else if (t + z >= 5) {
+      tie.style.display = 'block';
+    }
+
   }
 }
 
 rockBtn.addEventListener('click', rockGame(rock, cpu));
 paperBtn.addEventListener('click', paperGame(paper, cpu));
 scissorsBtn.addEventListener('click', scissorsGame(scissors, cpu));
-
-// let cpu = computerPlay();
-
-// console.log(game(userBtn, cpu));
-
-
-// function game (playerSelection) {
-
-//   function playRound (computerSelection) {
-
-//     let a = playerSelection.toLowerCase();
-
-//     if (a === "rock" && computerSelection === "rock") {
-//       return "It's a tie!";
-//     } else if (a === "rock" && computerSelection === "scissors") {
-//       return "You Win! Rock beats Scissors!";
-//     } else if (a === "rock" && computerSelection === "paper") {
-//       return "You Lose! Paper beats Rock!";
-//     }
-
-//     if (a === "paper" && computerSelection === "rock") {
-//       return "You Win! Paper beats Rock!";
-//     } else if (a === "paper" && computerSelection === "scissors") {
-//       return "You Lose! Scissors beat Paper!";
-//     } else if (a === "paper" && computerSelection === "paper") {
-//       return "It's a Tie!";
-//     }
-
-//     if (a === "scissors" && computerSelection === "rock") {
-//       return "You Lose! Rock beats Scissors!";
-//     } else if (a === "scissors" && computerSelection === "scissors") {
-//       return "It's a Tie!";
-//     } else if (a === "scissors" && computerSelection === "paper") {
-//       return "You Win! Scissors beat Paper!";
-//     }
-
-//   }
-
-//   return playRound;
-
-// }
-
-// function gameCount () {
-//   let t = 0;
-//   let z = 0;
-//   for (let i = 0; i < 5; i++) {
-//     let result = game(prompt("rock, paper, sicssors"))(computerPlay());
-//     console.log(result);
-//     if (result.split("!")[0] === "You Win") {
-//       t++;
-//     } else if (result.split("!")[0] === "You Lose") {
-//       z++;
-//     }
-//     console.log(`Ja ${t} : Glupan ${z}`);
-//   }
-//     if (t > z) {
-//       alert("Pobjeda!");
-//     } else if (t < z) {
-//       alert("Izgubija!");
-//     } else {
-//       alert("Nerijesno!");
-//     }
-// }
-
-// gameCount();

@@ -1,20 +1,9 @@
-/* .wrapper-popup {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    display: none;
-}
-
-.popup {
+.popup-win, .popup-lose, .popup-tie{
     width: 500px;
     height: 500px;
     margin: 0 auto;
     display: none;
-} */
+}
 
 .choice {
     width: 960px;
